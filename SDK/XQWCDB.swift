@@ -14,24 +14,28 @@ public class XQWCDB: NSObject {
     
     public var database: Database?
     
-    public func initDB() {
-        
+    
+    /// 初始化数据库
+    /// - Parameter dbPath: 数据库路径  xxx.db，如为空则使用默认路径
+    public func initDB(_ dbPath: String = "") {
         if let _ = self.database {
             return
         }
         
-        let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "") + "/xqwcdb/xqwcdb.db"
+        var path = ""
+        if dbPath.count == 0 {
+            path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "") + "/xqwcdb/xqwcdb.db"
+        }
+        
         self.database = Database.init(withPath: path)
         
         // 加密
 //        self.database?.setCipher(key: <#T##Data?#>)
         
         if self.database?.canOpen == false {
-            print("不能打开")
+            print("wcdb 不能打开")
             return
         }
-        
-        
         
 //        HomeModel.xq_createTable()
 //        PeopleModel.xq_createTable()
