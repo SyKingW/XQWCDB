@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     s.source       = { :git => "https://github.com/SyKingW/XQWCDB.git" ,:tag => "#{s.version}"}   #工程地址及版本号
     s.requires_arc = true   #是否必须arc
     
-    s.swift_version = '5.1'
+    # s.swift_version = '5.7'
     s.source_files = 'SDK/**/*.{swift}'
 #    s.resources = 'SDK/**/*.{xib}'
 
